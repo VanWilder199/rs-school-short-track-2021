@@ -9,13 +9,20 @@
  *
  * The result should be [-1, 150, 160, 170, -1, -1, 180, 190]
  */
+// eslint-disable-next-line no-undef
+arr = [-1, 150, 160, 170, -1, -1, 180, 190];
+
 function sortByHeight(arr) {
-  arr.sort();
-  // for (let i = 0; i < arr.length; i++) {
-  //   if (arr[i] === -1) {
-  //     return;
-  //   } arr.sort((a, b) => a - b);
-  // }
+  const arrResult = arr.filter((elem) => elem !== -1).sort((a, b) => a - b);
+  arrResult.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] !== -1) {
+      arr.splice(i, 1, arrResult.shift());
+    }
+  }
+  return arr;
 }
+
+
 
 module.exports = sortByHeight;
